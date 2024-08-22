@@ -8,6 +8,8 @@ Domain:SQL
 
 Duration:August to September
 
+Mentor Name:Muzammil Ahmed
+
 Here’s an overview of the Library Management System you’ve designed using SQL:
 
 1. Database Creation
