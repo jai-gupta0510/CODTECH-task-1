@@ -1,3 +1,5 @@
+TASK 2 ->  EMPLOYEE MANAGEMENT SYSTEM
+
 create database employeerecords;
 Query OK, 1 row affected (0.008 sec)
 
