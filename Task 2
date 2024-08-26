@@ -1,0 +1,81 @@
+create database employeerecords;
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [(none)]> use  employeerecords;
+Database changed
+MariaDB [employeerecords]>
+
+Departments Table:
+
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY AUTO_INCREMENT,
+    DepartmentName VARCHAR(255) NOT NULL,
+    Location VARCHAR(255)
+);
+
+
+JobPositions Table:
+
+CREATE TABLE JobPositions (
+    JobPositionID INT PRIMARY KEY AUTO_INCREMENT,
+    PositionTitle VARCHAR(255) NOT NULL,
+    Description TEXT
+);
+
+
+Employees Table:
+
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(100) NOT NULL,
+    LastName VARCHAR(100) NOT NULL,
+    BirthDate DATE,
+    HireDate DATE,
+    DepartmentID INT,
+    JobPositionID INT,
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID),
+    FOREIGN KEY (JobPositionID) REFERENCES JobPositions(JobPositionID)
+);
+
+Salaries Table:
+
+CREATE TABLE Salaries (
+    SalaryID INT PRIMARY KEY AUTO_INCREMENT,
+    EmployeeID INT,
+    SalaryAmount DECIMAL(10, 2),
+    EffectiveDate DATE,
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
+
+
+Adding a Department:
+
+INSERT INTO Departments (DepartmentID,DepartmentName, Location)VALUES (001, 'Human Resources','San Francisco');
+INSERT INTO Departments (DepartmentID,DepartmentName, Location)VALUES (002, 'Sales','Noida');
+INSERT INTO Departments (DepartmentID,DepartmentName, Location)VALUES (003, 'IT','Gurugram');
+
+
+Adding a Job Position:
+
+INSERT INTO JobPositions (PositionTitle, Description)
+      VALUES ('Software Engineer', 'Develops and maintains software applications.');
+
+
+        INSERT INTO JobPositions (PositionTitle, Description)
+      VALUES('HR Manager', 'Manages employee relations and recruitment.');
+
+
+ INSERT INTO JobPositions (PositionTitle, Description)
+   VALUES ('Web Developer', 'Develops and maintains Websites');
+
+
+Adding an Employee:
+
+INSERT INTO Employees (FirstName, LastName, BirthDate, HireDate, DepartmentID, JobPositionID)
+VALUES ('Jay', 'Gupta', '2003-10-05', '2020-01-10', 2, 1),
+       ('Aman', 'sharma', '1999-03-22', '2021-07-15', 1, 2),
+       ('Kartik', 'Parashar', '2003-05-05', '2022-01-10', 3, 2),
+       ('Kunal', 'Vaishnav', '2001-02-05', '2019-01-02', 3, 1),
+       ('Pranhu', 'kumar', '2003-10-05', '2012-06-07', 1, 3),
+       ('Gaurav', 'Tiwari', '1998-10-05', '2013-03-10', 2, 2),
+       ('Ansh', 'Kandari', '1987-10-05', '2014-05-10', 3, 3);
