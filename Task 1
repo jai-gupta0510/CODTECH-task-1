@@ -1,3 +1,6 @@
+TASK 1 -> LIBRARY MANAGEMENT SYSTEM <-
+
+
 -- Create Books table
 
 CREATE TABLE Books (
